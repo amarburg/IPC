@@ -8,7 +8,7 @@
 */
 
 #include <algorithm>
-#include <filesystem>
+#include <boost/filesystem.hpp>
 #include <string.h>
 #include <thread>
 
@@ -190,8 +190,7 @@ namespace ipc
 #else
     static inline bool is_socket_exists(const char* s) noexcept
     {
-        std::error_code ec;
-        return std::filesystem::exists(s, ec);
+        return boost::filesystem::exists(s);
     }
 #endif
 
